@@ -15,8 +15,7 @@ use yii\helpers\Url;
 
 ?>
 <div class="panel panel-default">
-
-    <div class="panel-body">
+    <div class="panel-body search-bar-header">
         <?= Html::beginForm(Url::to(['/directory/directory/spaces']), 'get', ['class' => 'form-search']); ?>
         <div class="row">
             <div class="col-md-12">
@@ -33,7 +32,6 @@ use yii\helpers\Url;
         <?php endif; ?>
     </div>
 
-    <hr>
     <ul class="media-list">
         <?php foreach ($spaces as $space) : ?>
             <li>
