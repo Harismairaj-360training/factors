@@ -1,0 +1,63 @@
+body{
+  background-color: #fff !important;
+  padding-top: 60px !important;
+}
+.banner {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 350px;
+    padding-top: 40px;
+}
+.banner h2 {
+    padding-top: 5%;
+}
+.media-left > img{
+  padding: 10px;
+}
+.media-body h4{
+  font-weight: 400;
+  color: #5b9ac6;
+}
+.topbar ul.nav>li {
+    background-color: #fff;
+}
+
+.wall-entry .well{
+  background-color: #dcf0ff;
+}
+
+div#topbar-second,
+.nav-pills .dropdown-menu, .nav-tabs .dropdown-menu, .account .dropdown-menu{
+  background-color: #206ea9 !important;
+}
+
+.user-title {
+    color: #666;
+}
+
+#topbar-first,
+#topbar-first .dropdown.account>a, #topbar-first .dropdown.account.open>a, #topbar-first .dropdown.account>a:hover, #topbar-first .dropdown.account.open>a:hover,
+#topbar-first .nav>li>a:hover, #topbar-first .nav>.open>a{
+  background-color: #fff !important;
+}
+
+a.list-group-item:hover, a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus,
+#topbar-first .btn-group>a{
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.wall-entry .panel{
+  background-color: #eff8ff;
+}
+
+.space-acronym,
+.btn-primary{
+  background-color: #206ea9 !important;
+}
+
+a.list-group-item:hover, a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus,
+.nav-pills .dropdown-menu li, .nav-tabs .dropdown-menu li, .account .dropdown-menu li{
+  border-color: #206ea9 !important;
+}
