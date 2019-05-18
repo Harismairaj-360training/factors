@@ -3,8 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use humhub\widgets\PanelMenu;
-use humhub\modules\qs\widgets\Image;
-use humhub\modules\topics\helpers\Seo as SeoHelper;
+use humhub\modules\user\widgets\Image;
 ?>
 <div class="panel panel-default members" id="new-people-panel">
     <?= PanelMenu::widget(['id' => 'new-people-panel']); ?>
@@ -14,7 +13,7 @@ use humhub\modules\topics\helpers\Seo as SeoHelper;
     </div>
     <div class="panel-body">
         <?php foreach ($newUsers->limit(10)->all() as $user) : ?>
-            <?= Image::widget(['user' => $user, 'width' => 40, 'showTooltip' => true, 'link'=>SeoHelper::createProfilePageURL(Url::base(true).'/profile/',$user->profile->user_id,$user->profile->firstname.' '.$user->profile->lastname)]); ?>
+            <?= Image::widget(['user' => $user, 'width' => 40, 'showTooltip' => true]); ?>
         <?php endforeach; ?>
 
         <?php if ($showInviteButton || $showMoreButton): ?>
