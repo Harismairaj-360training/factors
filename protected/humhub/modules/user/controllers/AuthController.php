@@ -9,7 +9,6 @@
 namespace humhub\modules\user\controllers;
 
 use Yii;
-use yii\helpers\Url;
 use humhub\components\Controller;
 use humhub\modules\user\models\User;
 use humhub\modules\user\authclient\AuthAction;
@@ -34,7 +33,8 @@ class AuthController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions() {
+    public function actions()
+    {
         return [
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
@@ -50,7 +50,8 @@ class AuthController extends Controller
     /**
      * @inheritdoc
      */
-    public function beforeAction($action) {
+    public function beforeAction($action)
+    {
         // Remove authClient from session - if already exists
         Yii::$app->session->remove('authClient');
 
@@ -60,7 +61,8 @@ class AuthController extends Controller
     /**
      * Displays the login page
      */
-    public function actionLogin() {
+    public function actionLogin()
+    {
         // If user is already logged in, redirect him to the dashboard
         if (!Yii::$app->user->isGuest) {
             return $this->goBack();
@@ -72,7 +74,7 @@ class AuthController extends Controller
             return $this->onAuthSuccess($login->authClient);
         }
 
-        // Self Invite
+        // Self Invite 
         $invite = new Invite();
         $invite->scenario = 'invite';
         if ($invite->load(Yii::$app->request->post()) && $invite->selfInvite()) {
@@ -89,73 +91,14 @@ class AuthController extends Controller
         return $this->render('login', array('model' => $login, 'invite' => $invite, 'canRegister' => $invite->allowSelfInvite()));
     }
 
-
-    /**
-     * Displays the login page
-     */
-    public function actionAutoLogin() {
-        //$encoded = base64_encode('test2|360.quickstart.360@humhub.com|spaceguid');
-        $encoded = Yii::$app->request->getQueryParam('a');
-        $decoded =  base64_decode($encoded);
-        $decodedParams = explode('|', $decoded);
-
-        $params = array(
-            'Space' => array(
-                'guid' => $decodedParams[2]
-            ),
-            'Login' => array(
-                'username' => $decodedParams[0],
-                'password' => $decodedParams[1],
-                'rememberMe' => '1',
-            )
-        );
-
-        if(array_key_exists("Space", $params) && array_key_exists("guid", $params["Space"]))
-        {
-            if($params["Space"]['guid'] == "")
-            {
-              Yii::$app->user->returnUrl = Url::base(true);
-            }else{
-              Yii::$app->user->returnUrl = Url::base(true).'/s/'.$params["Space"]['guid'];
-            }
-        }
-
-
-        // If user is already logged in, redirect him to the dashboard
-        if (!Yii::$app->user->isGuest) {
-            return $this->goBack();
-        }
-
-        // Login Form Handling
-        $login = new Login;
-        if ($login->load($params) && $login->validate()) {
-            return $this->onAuthSuccess($login->authClient);
-        }
-
-        // Self Invite
-        $invite = new Invite();
-        $invite->scenario = 'invite';
-        if ($invite->load($params) && $invite->selfInvite()) {
-            if (Yii::$app->request->isAjax) {
-                return $this->renderAjax('register_success_modal', ['model' => $invite]);
-            } else {
-                return $this->render('register_success', ['model' => $invite]);
-            }
-        }
-
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('login_modal', array('model' => $login, 'invite' => $invite, 'canRegister' => $invite->allowSelfInvite()));
-        }
-        return $this->render('login', array('model' => $login, 'invite' => $invite, 'canRegister' => $invite->allowSelfInvite()));
-    }
-
     /**
      * Handle successful authentication
-     *
+     * 
      * @param \yii\authclient\BaseClient $authClient
      * @return Response
      */
-    public function onAuthSuccess(\yii\authclient\BaseClient $authClient) {
+    public function onAuthSuccess(\yii\authclient\BaseClient $authClient)
+    {
         $attributes = $authClient->getUserAttributes();
 
         // User already logged in - Add new authclient to existing user
@@ -164,13 +107,13 @@ class AuthController extends Controller
             return $this->redirect(['/user/account/connected-accounts']);
         }
 
-        // Login existing user
+        // Login existing user 
         $user = AuthClientHelpers::getUserByAuthClient($authClient);
-
+        
         if ($user !== null) {
             return $this->login($user, $authClient);
         }
-
+        
         if (!$authClient instanceof ApprovalBypass && !Yii::$app->getModule('user')->settings->get('auth.anonymousRegistration')) {
             Yii::$app->session->setFlash('error', Yii::t('UserModule.base', "You're not registered."));
             return $this->redirect(['/user/auth/login']);
@@ -217,12 +160,13 @@ class AuthController extends Controller
 
     /**
      * Login user
-     *
+     * 
      * @param User $user
      * @param \yii\authclient\BaseClient $authClient
      * @return Response the current response object
      */
-    protected function login($user, $authClient) {
+    protected function login($user, $authClient)
+    {
         $redirectUrl = ['/user/auth/login'];
         if ($user->status == User::STATUS_ENABLED) {
             $duration = 0;
@@ -231,7 +175,7 @@ class AuthController extends Controller
                     $duration = Yii::$app->getModule('user')->loginRememberMeDuration;
                 }
             }
-
+            
             AuthClientHelpers::updateUser($authClient, $user);
 
             if (Yii::$app->user->login($user, $duration)) {
@@ -256,7 +200,8 @@ class AuthController extends Controller
     /**
      * Logouts a User
      */
-    public function actionLogout() {
+    public function actionLogout()
+    {
         $language = Yii::$app->user->language;
 
         Yii::$app->user->logout();
@@ -278,7 +223,8 @@ class AuthController extends Controller
      * Allows third party applications to convert a valid sessionId
      * into a username.
      */
-    public function actionGetSessionUserJson() {
+    public function actionGetSessionUserJson()
+    {
         Yii::$app->response->format = 'json';
 
         $sessionId = Yii::$app->request->get('sessionId');
