@@ -3,6 +3,17 @@
 /* @var $content string */
 
 \humhub\assets\AppAsset::register($this);
+
+$isCustomer = !empty(Yii::$app->user->identity->username);
+$isAdmin = Yii::$app->user->isAdmin();
+$bodyCSS = "";
+if($isCustomer && !$isAdmin){
+  $bodyCSS = "show-left-nav ";
+}
+if(!$isCustomer)
+{
+  $bodyCSS .= "non-login";
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -14,7 +25,7 @@
         <?php $this->head() ?>
         <?= $this->render('head'); ?>
     </head>
-    <body>
+    <body class="<?php echo $bodyCSS; ?>">
         <?php $this->beginBody() ?>
 
         <!-- start: first top navigation bar -->
