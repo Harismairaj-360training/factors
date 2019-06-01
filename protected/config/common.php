@@ -22,6 +22,14 @@ return [
                     'normalizer' => [
                         'collapseSlashes' => true
                     ]
+                ],
+                [
+                    'pattern' => 'dashboard/',
+                    'route' => 'dashboard/dashboard/index',
+                    'suffix' => '/',
+                    'normalizer' => [
+                        'collapseSlashes' => true
+                    ]
                 ]
             ]
         ]

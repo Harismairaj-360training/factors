@@ -1,0 +1,10 @@
+{
+    "id": "custom",
+    "name": "custom",
+    "description": "All Customization",
+    "keywords": ["custom"],
+    "version": "0.1",
+    "humhub": {
+        "minVersion": "0.20"
+    }
+}
