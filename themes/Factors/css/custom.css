@@ -1,0 +1,38 @@
+#topbar-first{
+  background-color: #fff !important;
+}
+#topbar-first .btn-enter {
+  background-color: #fff;
+  color: #196fab;
+  border: 1px solid #196fab;
+}
+
+a.call-out{
+  color: #222 !important;
+  position: relative;
+}
+.call-out > div{
+  font-weight: 400;
+}
+.call-out:before{
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  content: "";
+  background-repeat: no-repeat;
+  background-image: url('../img/icons/call_out.png');
+  padding: 24px;
+  background-size: contain;
+  background-position: center center;
+}
+.call-out::after {
+  content: " | ";
+  position: absolute;
+  display: block;
+  right: -8px;
+  top: 0;
+  bottom: 0;
+  font-size: 36px;
+  font-weight: 100;
+  color: #eee;
+}
