@@ -1,7 +1,8 @@
 <?php
 
 //use humhub\modules\directory\widgets\Menu;
-use humhub\modules\directory\widgets\Sidebar;
+use humhub\modules\custom\widgets\directory\NewMembers as Sidebar;
+use \yii\helpers\Url;
 
 \humhub\assets\JqueryKnobAsset::register($this);
 ?>
@@ -13,7 +14,7 @@ use humhub\modules\directory\widgets\Sidebar;
           <div class="panel-body">
             <h1>Consulting Experts</h1>
             <p>Curabitur ac lacus arcu. Sed vehicula varius lectus auctor viverra. Vehicula nibh vel ante commodo feugiat. Nulla ut enim lobortis orci gravida volutpat.</p>
-            <a href="#" class="label label-default">Read More</a>
+            <a href="<?= Url::toRoute('/experts'); ?>" class="label label-default">Read More</a>
           </div>
         </div>
       </div>
@@ -22,7 +23,7 @@ use humhub\modules\directory\widgets\Sidebar;
           <div class="panel-body">
             <h1>Find GRC Topics</h1>
             <p>Curabitur ac lacus arcu. Sed vehicula varius lectus auctor viverra. Vehicula nibh vel ante commodo feugiat. Nulla ut enim lobortis orci gravida volutpat.</p>
-            <a href="#" class="label label-default">Read More</a>
+            <a href="<?= Url::toRoute('/topics'); ?>" class="label label-default">Read More</a>
           </div>
         </div>
       </div>
@@ -31,7 +32,7 @@ use humhub\modules\directory\widgets\Sidebar;
           <div class="panel-body">
             <h1>Interact With A Community</h1>
             <p>Curabitur ac lacus arcu. Sed vehicula varius lectus auctor viverra. Vehicula nibh vel ante commodo feugiat. Nulla ut enim lobortis orci gravida volutpat.</p>
-            <a href="#" class="label label-default">Read More</a>
+            <a href="<?= Url::toRoute('/dashboard'); ?>" class="label label-default">Read More</a>
           </div>
         </div>
       </div>
@@ -48,6 +49,19 @@ use humhub\modules\directory\widgets\Sidebar;
         </div>
         <div class="col-md-3">
             <?= Sidebar::widget(); ?>
+            <?= \humhub\modules\dashboard\widgets\DashboardContent::widget(); ?>
+            <?php
+            echo \humhub\modules\dashboard\widgets\Sidebar::widget([
+                'widgets' => [
+                    [
+                        \humhub\modules\activity\widgets\Stream::className(),
+                        ['streamAction' => '/dashboard/dashboard/stream'],
+                        ['sortOrder' => 150]
+                    ]
+                ]
+            ]);
+            ?>
         </div>
+
     </div>
 </div>

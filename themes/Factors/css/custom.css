@@ -1,3 +1,92 @@
+body{
+  background:none;
+}
+img.img-rounded{
+    border-radius: 0 !important;
+}
+
+.custom-users .panel-body.searchp-bar,
+.custom-spaces .panel-body.searchp-bar{
+  border: 1px solid #00d5cb;
+  background-color: #f1fffe;
+}
+
+.custom-users input.form-control.form-search,
+.custom-spaces input.form-control.form-search {
+  font-size: 18px;
+  background: none;
+  border-radius: 0;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 15px;
+  background-color: #fff;
+  border: none;
+}
+.custom-users .form-group-search .fa-search,
+.custom-spaces .form-group-search .fa-search{
+  height: 50px;
+  border-radius: 0;
+  border: none;
+  margin: 0;
+  top: 0;
+  right: 0;
+  width: 40px;
+  color: #196fab !important;
+  background-color: #fff;
+}
+.custom-users .form-group.form-group-search,
+.custom-spaces .form-group.form-group-search{
+    margin-bottom: 0;
+}
+
+.custom-users .media-body > a.label,
+.custom-spaces .media-body > a.label{
+  padding: 10px 20px;
+  font-size: 11px !important;
+  margin-top: 10px;
+  text-transform: capitalize;
+}
+
+.custom-users .media-list li:first-child,
+.custom-spaces .media-list li:first-child{
+  border-top: 1px solid #eee;
+}
+.custom-users .media-list li,
+.custom-spaces .media-list li{
+  border-right: 1px solid #eee;
+  border-left: 1px solid #eee;
+  padding: 20px;
+}
+
+.panel.sidebar-custom-users,
+.panel.custom-spaces,
+.panel.custom-users{
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border-radius: 0;
+}
+.panel.sidebar-custom-users .panel-body{
+    padding: 0;
+}
+.media-list li:hover .default-icon.space-acronym::after{
+    background-color: #f6f6f6 !important;
+}
+.default-icon.space-acronym{
+  position: relative;
+}
+.default-icon.space-acronym::after {
+  background-repeat: no-repeat;
+  background-image: url(../img/icons/symbol.png);
+  background-position: center 0;
+  background-color: #fff !important;
+  content: "";
+  top: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .banner.row{
   margin-top: -35px;
 }

@@ -16,17 +16,17 @@ return [
                     ]
                 ],
                 [
-                    'pattern' => 'directory/directory/spaces/',
-                    'route' => 'directory/directory/spaces',
-                    'suffix' => '/',
+                    'pattern' => 'experts',
+                    'route' => 'directory/directory/members',
+                    'suffix' => '',
                     'normalizer' => [
                         'collapseSlashes' => true
                     ]
                 ],
                 [
-                    'pattern' => 'dashboard/',
-                    'route' => 'dashboard/dashboard/index',
-                    'suffix' => '/',
+                    'pattern' => 'topics',
+                    'route' => 'directory/directory/spaces',
+                    'suffix' => '',
                     'normalizer' => [
                         'collapseSlashes' => true
                     ]
