@@ -13,7 +13,7 @@ use \yii\helpers\Url;
         <div class="panel panel-default">
           <div class="panel-body">
             <h1>Consulting Experts</h1>
-            <p>Curabitur ac lacus arcu. Sed vehicula varius lectus auctor viverra. Vehicula nibh vel ante commodo feugiat. Nulla ut enim lobortis orci gravida volutpat.</p>
+            <p>360Experts are former and existing compliance managers, regulators, system operators and consultants in different industries.</p>
             <a href="<?= Url::toRoute('/experts'); ?>" class="label label-default">Read More</a>
           </div>
         </div>
@@ -22,7 +22,7 @@ use \yii\helpers\Url;
         <div class="panel panel-default">
           <div class="panel-body">
             <h1>Find GRC Topics</h1>
-            <p>Curabitur ac lacus arcu. Sed vehicula varius lectus auctor viverra. Vehicula nibh vel ante commodo feugiat. Nulla ut enim lobortis orci gravida volutpat.</p>
+            <p>Discover the latest industry news, uncover solutions to GRC problems, and see what topics are trending in the GRC sector.</p>
             <a href="<?= Url::toRoute('/topics'); ?>" class="label label-default">Read More</a>
           </div>
         </div>
@@ -30,15 +30,16 @@ use \yii\helpers\Url;
       <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h1>Interact With A Community</h1>
-            <p>Curabitur ac lacus arcu. Sed vehicula varius lectus auctor viverra. Vehicula nibh vel ante commodo feugiat. Nulla ut enim lobortis orci gravida volutpat.</p>
-            <a href="<?= Url::toRoute('/dashboard'); ?>" class="label label-default">Read More</a>
+            <h1>GRC Insight</h1>
+            <p>Thought leadership and discussions about the current state and the future of corporate governance, risk, and compliance.</p>
+            <a href="https://www.360factors.com/blog/" class="label label-default">Read More</a>
           </div>
         </div>
       </div>
     </div>
     <div class="middle-text">
-        <h1>360factors specializes in Governance, Risk, and Compliance (GRC) solutions which enable organizations to support their GRC functions, streamline their GRC processes, and report to stakeholders</h1>
+        <h1 style="margin-top:-10px !important; margin-bottom:-20px !important;">360ExpertConnect - Mentoring & Discussions</h1>
+		<p style="text-align: center;">You can join 360factor GRC mentoring & discussions for Free Ask Question, Give Answer, Discuss GRC Problems, Learn, and Grow</p>
     </div>
     <div class="row">
         <?php /*<div class="col-md-2">
