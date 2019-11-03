@@ -2,15 +2,26 @@ body{
   background:none;
 }
 img.img-rounded{
-    border-radius: 0 !important;
+  border-radius: 0 !important;
 }
-
+.guest-form.form-inline,
+.guest-form.form-inline + .text-muted {
+    text-align: right;
+    display: block;
+}
+#postSubmitBtn_0 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 .custom-users .panel-body.searchp-bar,
 .custom-spaces .panel-body.searchp-bar{
   border: 1px solid #00d5cb;
   background-color: #f1fffe;
 }
-
+.topbar ul.nav{
+  float: right;
+}
 .custom-users input.form-control.form-search,
 .custom-spaces input.form-control.form-search {
   font-size: 18px;
@@ -208,4 +219,23 @@ a.call-out{
   font-size: 36px;
   font-weight: 100;
   color: #eee;
+}
+.custom-error{
+  color: #f44336 !important;
+  font-size: 12px;
+}
+.hint-block:hover, .help-block:not(.help-block-error):hover {
+    color: #d13d27 !important;
+}
+button[disabled], input[disabled] {
+    opacity: 0.4;
+    pointer-events:none;
+}
+.form-group.field-agreementCheckbox {
+    display: inline-block;
+    margin-bottom: 0 !important;
+}
+
+.form-group.field-agreementCheckbox .help-block{
+    display:none;
 }

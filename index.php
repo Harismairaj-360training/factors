@@ -13,6 +13,7 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 require(__DIR__ . '/protected/vendor/autoload.php');
 require(__DIR__ . '/protected/vendor/yiisoft/yii2/Yii.php');
 
+defined('STORE_URL') or define('STORE_URL', 'https://www.360factors.com/');
 
 $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/protected/humhub/config/common.php'),

@@ -30,7 +30,11 @@ return [
                     'normalizer' => [
                         'collapseSlashes' => true
                     ]
-                ]
+                ],
+                'custom/guest/login/<postId:\d+>/<contentId:\d+>/<sguid:.+>' => 'custom/guest/login',
+                'custom/guest/login/<postId:\d+>/<contentId:\d+>' => 'custom/guest/login',
+                'custom/guest/register/<postId:\d+>/<contentId:\d+>/<sguid:.+>' => 'custom/guest/register',
+                'custom/guest/register/<postId:\d+>/<contentId:\d+>' => 'custom/guest/register',
             ]
         ]
     ],

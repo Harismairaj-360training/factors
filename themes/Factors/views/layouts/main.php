@@ -4,6 +4,8 @@
 
 \humhub\assets\AppAsset::register($this);
 
+use \yii\helpers\Url;
+
 $isCustomer = !empty(Yii::$app->user->identity->username);
 $isAdmin = Yii::$app->user->isAdmin();
 $bodyCSS = "";
@@ -49,16 +51,15 @@ if(!$isCustomer)
         <!-- start: second top navigation bar -->
         <div id="topbar-second" class="topbar">
             <div class="container">
+                <ul class="nav" id="search-menu-nav">
+                    <?= \humhub\widgets\TopMenuRightStack::widget(); ?>
+                </ul>
                 <ul class="nav" id="top-menu-nav">
                     <!-- load space chooser widget -->
                     <?= \humhub\modules\space\widgets\Chooser::widget(); ?>
 
                     <!-- load navigation from widget -->
                     <?= \humhub\widgets\TopMenu::widget(); ?>
-                </ul>
-
-                <ul class="nav pull-right" id="search-menu-nav">
-                    <?= \humhub\widgets\TopMenuRightStack::widget(); ?>
                 </ul>
             </div>
         </div>
@@ -67,6 +68,12 @@ if(!$isCustomer)
         <?= $content; ?>
 
         <?php $this->endBody() ?>
+
+        <script>
+          var BASE_THEME_URL="<?php echo $this->theme->getBaseUrl(); ?>";
+          var BASE_URL="<?php echo Url::toRoute('/'); ?>";
+        </script>
+
     </body>
 </html>
 <?php $this->endPage() ?>
