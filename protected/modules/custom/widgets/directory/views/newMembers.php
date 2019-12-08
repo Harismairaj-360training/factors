@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use humhub\widgets\PanelMenu;
-use humhub\modules\user\widgets\Image;
+use humhub\modules\custom\widgets\Image;
 ?>
 <div class="panel panel-default members sidebar-custom-users" id="new-people-panel">
     <?= PanelMenu::widget(['id' => 'new-people-panel']); ?>
@@ -18,16 +18,17 @@ use humhub\modules\user\widgets\Image;
             {
               continue;
             }
+            $link = str_replace("/u/","/experts/",$user->getUrl());
             ?>
             <li>
               <div class="media">
-                <?= Image::widget(['user' => $user, 'htmlOptions' => ['class' => 'pull-left']]); ?>
+                <?= Image::widget(['user' => $user, 'htmlOptions' => ['class' => 'pull-left'], 'link' => $link]); ?>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        <a href="<?= $user->getUrl(); ?>"><?= Html::encode($user->displayName); ?></a>
+                        <a href="<?= $link; ?>"><?= Html::encode($user->displayName); ?></a>
                         <?php /*<?= UserGroupList::widget(['user' => $user]); ?> */ ?>
                     </h4>
-                    <a href="<?= $user->getUrl(); ?>"><h5><?= Html::encode($user->profile->title); ?></h5></a>
+                    <a href="<?= $link; ?>"><h5><?= Html::encode($user->profile->title); ?></h5></a>
                 </div>
               </div>
               <?php /*<?= Image::widget(['user' => $user, 'width' => 40, 'showTooltip' => true]); ?> */ ?>

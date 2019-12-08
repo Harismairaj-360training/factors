@@ -7,6 +7,8 @@ return [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => false,
             'rules' => [
+                'experts/<uguid:.+>' => 'custom/experts/index',
+                'about/<uguid:.+>' => 'custom/experts/about',
                 [
                     'pattern' => '/',
                     'route' => 'directory/directory/spaces',

@@ -5,8 +5,8 @@ use yii\helpers\Url;
 use humhub\modules\custom\libs\Html as QsHtml;
 use humhub\widgets\TimeAgo;
 use humhub\modules\space\models\Space;
-//use humhub\modules\custom\widgets\Image as UserImage;
-use humhub\modules\user\widgets\Image as UserImage;
+use humhub\modules\custom\widgets\Image as UserImage;
+//use humhub\modules\user\widgets\Image as UserImage;
 use humhub\modules\content\widgets\WallEntryControls;
 //use humhub\modules\questions\widgets\content\WallEntryControls;
 use humhub\modules\space\widgets\Image as SpaceImage;
@@ -34,13 +34,15 @@ use humhub\modules\content\widgets\WallEntryLabels;
                 </li>
             </ul>
             <!-- end: show wall entry options -->
-
+            <?php
+              $link = str_replace("/u/","/experts/",$user->getUrl());
+            ?>
             <?=
             UserImage::widget([
                 'user' => $user,
                 'width' => 40,
-                'htmlOptions' => ['class' => 'pull-left']/*,
-                'link'=> SeoHelper::createProfilePageURL(Url::base(true).'/profile/',$user->profile->user_id,$user->profile->firstname.' '.$user->profile->lastname)*/
+                'htmlOptions' => ['class' => 'pull-left'],
+                'link'=> $link
             ]);
             ?>
 
@@ -61,7 +63,7 @@ use humhub\modules\content\widgets\WallEntryLabels;
                       <strong><a style="text-transform: capitalize;" href="< ?= SeoHelper::createQuestionPageURL(Url::base(true),$object->content->id,$object->title); ?>">< ?= $object->title; ?></a></strong><br>
                     < ?php } ? -->
 
-                    <?= QsHtml::containerLink($user,[],/*"<span class='guest-tag'>Guest Post</span>"*/""); ?>
+                    <?= QsHtml::containerLink($user,[],/*"<span class='guest-tag'>Guest Post</span>"*/"",$link); ?>
                     <?php if ($showContentContainer): ?>
                         <span class="viaLink">
                             <i class="fa fa-caret-right" aria-hidden="true"></i>

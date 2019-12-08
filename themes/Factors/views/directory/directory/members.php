@@ -6,7 +6,7 @@
 /* @var $pagination yii\data\Pagination */
 
 use yii\helpers\Html;
-use humhub\modules\user\widgets\Image;
+use humhub\modules\custom\widgets\Image;
 use humhub\modules\directory\widgets\MemberActionsButton;
 use humhub\modules\directory\widgets\UserTagList;
 use humhub\modules\directory\widgets\UserGroupList;
@@ -53,14 +53,16 @@ use humhub\modules\directory\widgets\UserGroupList;
                       <div class="pull-right memberActions">
                           <?= MemberActionsButton::widget(['user' => $user]); ?>
                       </div>
-
-                      <?= Image::widget(['user' => $user, 'htmlOptions' => ['class' => 'pull-left']]); ?>
+                      <?php
+                        $link = str_replace("/u/","/experts/",$user->getUrl());
+                      ?>
+                      <?= Image::widget(['user' => $user, 'htmlOptions' => ['class' => 'pull-left'], 'link'=> $link]); ?>
                       <div class="media-body">
                           <h4 class="media-heading">
-                              <a href="<?= $user->getUrl(); ?>"><?= Html::encode($user->displayName); ?></a>
+                              <a href="<?= $link; ?>"><?= Html::encode($user->displayName); ?></a>
                               <?php /*<?= UserGroupList::widget(['user' => $user]); ?> */ ?>
                           </h4>
-                          <a href="<?= $user->getUrl(); ?>"><h5><?= Html::encode($user->profile->title); ?></h5></a>
+                          <a href="<?= $link; ?>"><h5><?= Html::encode($user->profile->title); ?></h5></a>
                           <?= UserTagList::widget(['user' => $user]); ?>
                       </div>
                   </div>

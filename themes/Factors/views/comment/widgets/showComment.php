@@ -9,7 +9,7 @@ use humhub\modules\user\widgets\Image as UserImage;
 //use humhub\modules\custom\widgets\Image as UserImage;
 use humhub\modules\file\widgets\ShowFiles;
 use humhub\modules\like\widgets\LikeLink;
-use humhub\modules\topics\helpers\Seo as SeoHelper;
+//use humhub\modules\topics\helpers\Seo as SeoHelper;
 ?>
 
 <div class="media" id="comment_<?= $comment->id; ?>"
@@ -45,12 +45,15 @@ use humhub\modules\topics\helpers\Seo as SeoHelper;
                 </ul>
             </li>
         </ul>
-    <?php endif; ?>
-    <?= UserImage::widget(['user' => $user, 'width' => 40, 'htmlOptions' => ['class' => 'pull-left']/*, 'link'=>SeoHelper::createProfilePageURL(Url::base(true).'/profile/',$user->profile->user_id,$user->profile->firstname.' '.$user->profile->lastname)*/]); ?>
+    <?php
+      endif;
+      $link = str_replace("/u/","/experts/",$user->getUrl());
+    ?>
+    <?= UserImage::widget(['user' => $user, 'width' => 40, 'htmlOptions' => ['class' => 'pull-left'], 'link'=> $link]); ?>
     <div>
         <div class="media-body">
             <h4 class="media-heading">
-                <small><?= QsHtml::containerLink($user,[],/*"<span class='guest-tag'>Guest Comment | </span>"*/""); ?></small>
+                <small><?= QsHtml::containerLink($user,[],/*"<span class='guest-tag'>Guest Comment | </span>"*/"",$link); ?></small>
                 <small><?= TimeAgo::widget(['timestamp' => $createdAt]); ?>
                     <?php if ($updatedAt !== null): ?>
                         &middot; <span class="tt" title="<?= Yii::$app->formatter->asDateTime($updatedAt); ?>"><?= Yii::t('ContentModule.base', 'Updated'); ?></span>

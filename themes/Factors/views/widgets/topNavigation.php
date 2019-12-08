@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use \yii\helpers\Url;
 
 ?>
 <?php foreach ($this->context->getItems() as $item) : ?>
@@ -9,7 +10,7 @@ use yii\helpers\Html;
         echo $item['id'];
     }
     ?>">
-            <?php echo Html::a($item['icon'] . "<br />" . $item['label'], $item['url'], $item['htmlOptions']); ?>
+          <?php echo Html::a($item['icon'] . "<br />" . $item['label'], ($item['label']!="Directory"?$item['url']:Url::toRoute('/topics')), $item['htmlOptions']); ?>
     </li>
 <?php endforeach; ?>
 

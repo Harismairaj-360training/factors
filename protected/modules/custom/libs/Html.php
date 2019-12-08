@@ -94,7 +94,7 @@ class Html extends \yii\bootstrap\Html
      * @param array $options the html options
      * @return string the generated html a tag
      */
-    public static function containerLink(ContentContainerActiveRecord $container, $options = [], $appendLabel)
+    public static function containerLink(ContentContainerActiveRecord $container, $options = [], $appendLabel = "", $link = "")
     {
         if ($container instanceof \humhub\modules\space\models\Space) {
             return static::a(static::encode($container->name), $container->getUrl(), $options);
@@ -113,7 +113,12 @@ class Html extends \yii\bootstrap\Html
             {
               $label .= " ".$appendLabel;
             }
-            $url = $container->getUrl();
+            if(!empty($link))
+            {
+              $url = $link;
+            }else{
+              $url = $container->getUrl();
+            }
             //$url = SeoHelper::createProfilePageURL(Url::base(true).'/profile/',$container->profile->attributes["user_id"],$container->profile->attributes["firstname"].' '.$container->profile->attributes["lastname"]);
             return static::a($label, $url, $options);
         } else {
