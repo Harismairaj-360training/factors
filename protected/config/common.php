@@ -33,6 +33,7 @@ return [
                         'collapseSlashes' => true
                     ]
                 ],
+                'topics/<sguid:.+>' => 'custom/topics/index',
                 'custom/guest/login/<postId:\d+>/<contentId:\d+>/<sguid:.+>' => 'custom/guest/login',
                 'custom/guest/login/<postId:\d+>/<contentId:\d+>' => 'custom/guest/login',
                 'custom/guest/register/<postId:\d+>/<contentId:\d+>/<sguid:.+>' => 'custom/guest/register',

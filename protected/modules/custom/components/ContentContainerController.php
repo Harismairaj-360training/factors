@@ -58,9 +58,25 @@ class ContentContainerController extends Controller
     public function init()
     {
         $request = Yii::$app->request;
+        $spaceGuid = $request->get('sguid');
         $username = $request->get('uguid');
 
-        if($username !== null) {
+        if ($spaceGuid !== null) {
+            $spaceGuid = explode("/",$spaceGuid);
+            $spaceGuid = $spaceGuid[0];
+            $this->contentContainer = Space::findOne(['url' => $spaceGuid]);
+            if ($this->contentContainer == null) {
+                throw new HttpException(404, Yii::t('base', 'Space not found!'));
+            }
+
+            $this->attachBehavior('SpaceControllerBehavior', [
+                'class' => SpaceController::className(),
+                'space' => $this->contentContainer,
+            ]);
+            $this->subLayout = "@humhub/modules/space/views/space/_layout";
+
+        } elseif ($username !== null) {
+
             $username = explode("/",$username);
             $username = $username[0];
             $this->contentContainer = User::findOne(['username' => $username]);

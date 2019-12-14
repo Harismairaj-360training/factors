@@ -35,14 +35,15 @@ use humhub\modules\content\widgets\WallEntryLabels;
             </ul>
             <!-- end: show wall entry options -->
             <?php
-              $link = str_replace("/u/","/experts/",$user->getUrl());
+              $userlink = str_replace("/u/","/experts/",$user->getUrl());
+              $spacelink = str_replace("/s/","/topics/",$container->getUrl());
             ?>
             <?=
             UserImage::widget([
                 'user' => $user,
                 'width' => 40,
                 'htmlOptions' => ['class' => 'pull-left'],
-                'link'=> $link
+                'link'=> $userlink
             ]);
             ?>
 
@@ -63,11 +64,11 @@ use humhub\modules\content\widgets\WallEntryLabels;
                       <strong><a style="text-transform: capitalize;" href="< ?= SeoHelper::createQuestionPageURL(Url::base(true),$object->content->id,$object->title); ?>">< ?= $object->title; ?></a></strong><br>
                     < ?php } ? -->
 
-                    <?= QsHtml::containerLink($user,[],/*"<span class='guest-tag'>Guest Post</span>"*/"",$link); ?>
+                    <?= QsHtml::containerLink($user,[],/*"<span class='guest-tag'>Guest Post</span>"*/"",$userlink); ?>
                     <?php if ($showContentContainer): ?>
                         <span class="viaLink">
                             <i class="fa fa-caret-right" aria-hidden="true"></i>
-                            <?= Html::containerLink($container,["class"=>"text-muted"]); ?>
+                            <?= QsHtml::containerLink($container,["class"=>"text-muted"],"",$spacelink); ?>
                         </span>
                     <?php endif; ?>
 

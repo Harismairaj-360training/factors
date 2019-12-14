@@ -19,7 +19,7 @@ if(!empty(Yii::$app->user->identity->username) && !Yii::$app->user->isAdmin())
     </div>
     <div class="row">
         <div class="col-md-2 layout-nav-container left-panel">
-            <?php echo \humhub\modules\space\widgets\Menu::widget(['space' => $space]); ?>
+            <?php echo \humhub\modules\custom\widgets\SpaceMenu::widget(['space' => $space]); ?>
             <br>
         </div>
 

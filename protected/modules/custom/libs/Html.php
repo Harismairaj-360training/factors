@@ -96,10 +96,16 @@ class Html extends \yii\bootstrap\Html
      */
     public static function containerLink(ContentContainerActiveRecord $container, $options = [], $appendLabel = "", $link = "")
     {
+        $url = "";
         if ($container instanceof \humhub\modules\space\models\Space) {
-            return static::a(static::encode($container->name), $container->getUrl(), $options);
+            if(!empty($link))
+            {
+              $url = $link;
+            }else{
+              $url = $container->getUrl();
+            }
+            return static::a(static::encode($container->name), $url, $options);
         } elseif ($container instanceof \humhub\modules\user\models\User) {
-
             $email = $container->attributes["email"];
             $findGuestPrefix = explode("-guest",$email);
             $isGuest = empty($findGuestPrefix[count($findGuestPrefix)-1]);

@@ -40,7 +40,9 @@ use humhub\modules\custom\widgets\directory\SpaceTagList;
 
     <div class="panel-body">
       <ul class="media-list">
-          <?php foreach ($spaces as $space) : ?>
+          <?php foreach ($spaces as $space) :
+            $link = str_replace("/s/","/topics/",$space->getUrl());
+             ?>
               <li>
                   <div class="media">
                       <div class="pull-right">
@@ -63,13 +65,13 @@ use humhub\modules\custom\widgets\directory\SpaceTagList;
                       */ ?>
 
                       <div class="media-body">
-                          <h4 class="media-heading"><a href="<?= $space->getUrl(); ?>"><?= Html::encode($space->name); ?></a>
+                          <h4 class="media-heading"><a href="<?= $link; ?>"><?= Html::encode($space->name); ?></a>
                               <?php if ($space->isArchived()) : ?>
                                   <span class="label label-warning"><?= Yii::t('ContentModule.widgets_views_label', 'Archived'); ?></span>
                               <?php endif; ?>
                           </h4>
 
-                          <a href="<?= $space->getUrl(); ?>"><h5><?= Html::encode(Helpers::truncateText($space->description, 300)); ?></h5></a>
+                          <a href="<?= $link; ?>"><h5><?= Html::encode(Helpers::truncateText($space->description, 300)); ?></h5></a>
                           <?= SpaceTagList::widget(['space' => $space]); ?>
                       </div>
                   </div>
